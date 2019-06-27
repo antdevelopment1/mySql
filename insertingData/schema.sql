@@ -1,32 +1,34 @@
-create table employees (
-    id int auto_increment not null primary key,
-    first_name varchar(255) not null,
-    last_name varchar(255) not null,
-    middle_name varchar(255),
-    age int not null,
-    current_status varchar(255) not null default 'employed'
+create table shirts (
+	shirt_id int auto_increment not null primary key,
+	article varchar(20),
+	color varchar(20),
+	shirt_size varchar(20),
+	last_worn int
 );
 
-insert into employees(first_name, last_name, age) values
-("Dora", "Smith", 58);
+insert into shirts (
+	article,
+	color,
+	shirt_size,
+	last_worn
+)
 
-create table cats (
-	id int auto_increment not null primary key,
-	name varchar(20), 
-	breed varchar(20), 
-	age int
-);
+values
+	("t-shirt", "white", "S", 10),
+	("tshirt", "green", "S", 200),
+	("polo shirt", "black", "M", 10),
+	("tank top", "blue", "S", 50),
+	("tshirt", "pink", "S", 0),
+	("polo shirt", "red", "M", 5),
+	("tank top", "white", "S", 200),
+	("tank top", "blue", "M", 15);
 
-insert into cats
-	(name, breed, age) 
+insert into shirts (
+	article,
+	color,
+	shirt_size,
+	last_worn
+)
+
 values 
-	('Ringo', 'Tabby', 4), 
-	('Cindy', 'Maine Coon', 10), 
-	('Dumbledore', 'Miane Coon', 11), 
-	('Egg', 'Persian', 4), 
-	('Misty', 'Tabby', 13), 
-	('George Micheal', 'Ragdoll', 9), 
-	('Jackson', 'Sphynx', 7);
-
-
-	
+	("polo shirt", "purple", "M", 50);
