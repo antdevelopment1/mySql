@@ -29,3 +29,19 @@ VALUES
 ('Oblivion: Stories', 'David', 'Foster Wallace', 2004, 172, 329),
 ('Consider the Lobster', 'David', 'Foster Wallace', 2005, 92, 343);
 
+select title, author_lname, 
+	case 
+		when title like '%stories%' then 'Short Stories'
+		when title = 'Just kids' or title like '%Heart%' then 'Memoir'
+		else 'Novel'
+	end as type 
+from books;
+
+select author_lname, 
+	case
+		when count(*) = 1 then '1 book'
+		else concat(count(*), " books")
+	end as count
+from books 
+group by author_lname;
+
