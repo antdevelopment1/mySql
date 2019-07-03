@@ -19,7 +19,10 @@ insert into customers (
 values 
     ('April', 'Copes', 'antdevelopment1@gmail.com'),
     ('John', 'Smith', 'johnsmith@mgial.com'),
-    ('Kevin', 'Dank', 'kevindank@gmail.com');
+    ('Kevin', 'Dank', 'kevindank@gmail.com'),
+    ('Sam', 'William', 'samwilliam@gmail.com'),
+    ('Joe', 'Dustin', 'joedustin@mgial.com'),
+    ('Drew', 'Andes', 'drewandes@gmail.com');
 
 insert into orders (
     order_date,
@@ -34,6 +37,15 @@ values (
 ),
 (
     '2015/02/09', 342.44, 3
+),
+(
+    '2018/12/17', 99.44, 1
+),
+(
+    '2012/11/15', 966.34, 1
+),
+(
+    '2011/02/02', 242.34, 2
 );
 
 select id from customers where last_name = "Copes";
@@ -49,3 +61,10 @@ select * from orders where customer_id = (
 
 -- Cross join
 select * from customers, orders;
+
+-- Implicit Inner Join In this case select all orders that belong to the customer id
+select * from customers c, orders where c.id = customer_id;
+
+select first_name, last_name, order_date, amount
+    from customers, orders
+        where customers.id = orders.customer_id;
