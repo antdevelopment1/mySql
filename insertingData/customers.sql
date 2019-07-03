@@ -85,4 +85,18 @@ select first_name, last_name, sum(amount) as total_spent
     join orders 
         on customers.id = orders.customer_id
 group by orders.customer_id
+order by total_spent asc;
+
+-- Left Join
+select first_name, last_name, order_date, amount
+    from customers
+    left join orders
+        on customers.id = orders.customer_id;
+
+-- Left Join Using IFNULL
+select first_name, last_name, IFNULL(sum(amount), 0) as total_spent
+    from customers
+    left join orders
+        on customers.id = orders.customer_id
+group by customers.id
 order by total_spent;
