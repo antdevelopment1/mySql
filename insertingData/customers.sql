@@ -68,3 +68,9 @@ select * from customers c, orders where c.id = customer_id;
 select first_name, last_name, order_date, amount
     from customers, orders
         where customers.id = orders.customer_id;
+
+-- Emplicit Inner Join
+select first_name, last_name, order_date, amount
+    from customers
+    join orders
+        on customer.id = orders.customer_id;
