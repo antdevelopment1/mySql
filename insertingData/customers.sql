@@ -100,3 +100,9 @@ select first_name, last_name, IFNULL(sum(amount), 0) as total_spent
         on customers.id = orders.customer_id
 group by customers.id
 order by total_spent;
+
+-- Right Join
+select first_name, last_name, order_date, amount
+    from customers
+    right join orders
+        on customers.id = orders.customer_id;
