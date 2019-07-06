@@ -183,3 +183,10 @@ select first_name, IFNULL(title, "Missing"), IFNULL(grade, 0)
     left join papers
         on students.id  = papers.student_id
         order by papers.grade desc;
+
+select first_name, IFNULL(avg(grade), 0) as average
+    from students
+    left join papers
+        on students.id = papers.student_id
+group by students.id
+order by average desc;
