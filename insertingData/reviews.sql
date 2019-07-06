@@ -75,3 +75,9 @@ join reviews
 select first_name, last_name, rating from reviews
 join reviewers
     on reviewers.id = reviews.reviewer_id; 
+
+-- Challenge 5
+select title as unreviewed_series from series
+left join reviews
+    on series.id = reviews.series_id
+    where rating is null;
