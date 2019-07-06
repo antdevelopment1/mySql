@@ -58,3 +58,15 @@ INSERT INTO reviews(series_id, reviewer_id, rating) VALUES
     (10,5,9.9),
     (13,3,8.0),(13,4,7.2),
     (14,2,8.5),(14,3,8.9),(14,4,8.9);
+
+-- Join 
+select title, rating from series
+join reviews
+    on series.id = reviews.series_id;
+
+-- Challenge 2 Average Rating
+select title, avg(rating) as avg_rating from series
+join reviews
+    on series.id = reviews.series_id
+    group by series.id
+    order by avg_rating;
