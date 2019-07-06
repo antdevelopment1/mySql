@@ -177,16 +177,30 @@ select first_name, title,  grade
         on students.id  = papers.student_id
         order by papers.grade desc;
 
--- Problem
+-- Problem 3
 select first_name, IFNULL(title, "Missing"), IFNULL(grade, 0)
     from students
     left join papers
         on students.id  = papers.student_id
         order by papers.grade desc;
 
+-- Problem  4
 select first_name, IFNULL(avg(grade), 0) as average
     from students
     left join papers
         on students.id = papers.student_id
+group by students.id
+order by average desc;
+
+-- Problem 5
+select first_name, IFNULL(avg(grade), 0) as average,
+    case
+        when avg(grade) is null then "Failing"
+        when avg(grade) >= 75 then "Passing"
+        else "Failing"
+    end  as passing_status
+    from students
+    left join papers
+    on students.id = student_id
 group by students.id
 order by average desc;
