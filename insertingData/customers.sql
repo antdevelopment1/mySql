@@ -106,3 +106,50 @@ select first_name, last_name, order_date, amount
     from customers
     right join orders
         on customers.id = orders.customer_id;
+
+-- Excercise 1
+create  table students (
+    id int auto_increment primary key,
+    first_name varchar(100)
+);
+
+create table papers (
+    id int auto_increment primary key,
+    title  varchar(255),
+    grade int,
+    student_id int,
+    foreign key (student_id) 
+        references students(id)
+        on delete cascade
+);
+
+insert into students (
+    first_name
+)
+values 
+    ("April"),
+    ("John"),
+    ("Kelly"),
+    ("Joe"),
+    ("Samantha");
+
+
+insert into papers (
+    title,
+    grade,
+    student_id
+)
+
+values 
+    ("History", 92, 1),
+    ("Math", 90, 1),
+    ("Science", 66, 2),
+    ("History", 22, 3),
+    ("Science", 0, 4),
+    ("Math", 0, 5),
+    ("English", 55, 2),
+    ("English", 78, 3),
+    ("Math", 62, 1),
+    ("Science", 33, 2),
+    ("History", 100, 5),
+    ("English", 44, 4);
