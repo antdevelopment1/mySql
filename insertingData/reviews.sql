@@ -70,3 +70,8 @@ join reviews
     on series.id = reviews.series_id
     group by series.id
     order by avg_rating;
+
+-- Challenge 3 
+select first_name, last_name, rating from reviews
+join reviewers
+    on reviewers.id = reviews.reviewer_id; 
