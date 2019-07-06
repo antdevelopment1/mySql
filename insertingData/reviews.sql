@@ -76,8 +76,15 @@ select first_name, last_name, rating from reviews
 join reviewers
     on reviewers.id = reviews.reviewer_id; 
 
--- Challenge 5
+-- Challenge 4
 select title as unreviewed_series from series
 left join reviews
     on series.id = reviews.series_id
     where rating is null;
+
+-- Challenege 5 Genre avg ratings
+select genre, round(avg(rating), 2) as avg_rating from series
+inner join reviews
+    on series.id = reviews.series_id
+group by genre
+order by avg_rating;
