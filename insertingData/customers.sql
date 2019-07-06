@@ -176,3 +176,10 @@ select first_name, title,  grade
     left join papers
         on students.id  = papers.student_id
         order by papers.grade desc;
+
+-- Problem
+select first_name, IFNULL(title, "Missing"), IFNULL(grade, 0)
+    from students
+    left join papers
+        on students.id  = papers.student_id
+        order by papers.grade desc;
