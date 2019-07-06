@@ -131,7 +131,9 @@ values
     ("John"),
     ("Kelly"),
     ("Joe"),
-    ("Samantha");
+    ("Samantha"),
+    ("Jason"),
+    ("Kristen");
 
 
 insert into papers (
@@ -153,3 +155,24 @@ values
     ("Science", 33, 2),
     ("History", 100, 5),
     ("English", 44, 4);
+
+-- Inner join
+select first_name, title, grade 
+    from students
+    inner join papers
+        on students.id = papers.student_id
+        order by papers.grade desc;
+
+-- Alternative Solution
+select first_name, title, grade 
+    from students
+    right join papers
+        on students.id = papers.student_id
+        order by papers.grade desc;
+
+-- Problem 2
+select first_name, title,  grade
+    from students
+    left join papers
+        on students.id  = papers.student_id
+        order by papers.grade desc;
