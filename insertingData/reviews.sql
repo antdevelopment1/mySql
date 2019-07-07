@@ -83,8 +83,25 @@ left join reviews
     where rating is null;
 
 -- Challenege 5 Genre avg ratings
-select genre, round(avg(rating), 2) as avg_rating from series
+select genre, title, round(avg(rating), 2) as avg_rating from series;
 inner join reviews
     on series.id = reviews.series_id
 group by genre
 order by avg_rating;
+
+-- Challenge 5 GENRE AVERAGE RATING (Why this one works and the above returns an grouping error needs to trobleshooted)
+select genre, title, round(avg(rating), 2) as avg_rating from series
+    inner join reviews
+        on series.id = reviews.series_id
+        group by series.id;
+
+-- Challenege 6 Reviewer Stats
+select first_name, 
+        last_name, 
+        count(rating) as count, 
+        ifnull(min(rating), "None") as "min", 
+        ifnull(max(rating), "None") as "max" 
+    from reviewers
+    left join reviews
+        on reviewers.id = reviews.reviewer_id
+group by reviewers.id; 
