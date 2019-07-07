@@ -99,9 +99,45 @@ select genre, title, round(avg(rating), 2) as avg_rating from series
 select first_name, 
         last_name, 
         count(rating) as count, 
-        ifnull(min(rating), "None") as "min", 
-        ifnull(max(rating), "None") as "max" 
+        ifnull(min(rating), 0) as "min", 
+        ifnull(max(rating), 0) as "max",
+    case
+        when count(rating) > 0 then "Active"
+        else "Inactive"
+    end as status
     from reviewers
     left join reviews
         on reviewers.id = reviews.reviewer_id
 group by reviewers.id; 
+
+-- Challenege 6 Reviewer Stats Alternative Using IF
+select first_name, 
+        last_name, 
+        count(rating) as count, 
+        ifnull(min(rating), 0) as "min", 
+        ifnull(max(rating), 0) as "max",
+        if(count(rating) > 0, "ACTIVE", "INACTIVE") as status
+    -- case
+    --     when count(rating) > 0 then "Active"
+    --     else "Inactive"
+    -- end as status
+    from reviewers
+    left join reviews
+        on reviewers.id = reviews.reviewer_id
+group by reviewers.id; 
+
+-- Challenege 6 Reviewer Stats Alternative Using Power User, Active, and Inactive as Input for Fields
+select first_name, 
+        last_name, 
+        count(rating) as count, 
+        ifnull(min(rating), 0) as "min", 
+        ifnull(max(rating), 0) as "max",
+    case
+        when count(rating) > 9 then "Power User"
+        when count(rating) > 0 then "Active"
+        else "Inactive"
+    end as status
+    from reviewers
+    left join reviews
+        on reviewers.id = reviews.reviewer_id
+group by reviewers.id;
