@@ -141,3 +141,12 @@ select first_name,
     left join reviews
         on reviewers.id = reviews.reviewer_id
 group by reviewers.id;
+
+
+-- Joining all three tables together Challenge 7
+select title, rating, concat(first_name, " ", last_name) as "full name" from reviewers
+inner join reviews
+    on reviewers.id = reviews.reviewer_id
+inner join series
+    on series.id = reviews.series_id
+    order by title;
