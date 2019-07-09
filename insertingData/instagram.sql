@@ -88,3 +88,32 @@ value
 -- select photos.image_url, users.username from photos
 -- inner join users
 -- on photos.user_id = users.id;
+
+create table tags (
+    id int auto_increment primary key,
+    tag_name varchar(255) unique,
+    created_at timestamp default now()
+);
+
+create table photo_tags (
+    photo_id int not null,
+    tag_id int not null,
+    foreign key(photo_id) references photos(id),
+    foreign key(tag_id) references tags(id),
+    primary key(photo_id, tag_id)
+);
+
+insert into tags (tag_name) 
+values 
+    ("Adorable"),
+    ("cute"),
+    ("sunrise");
+
+insert into photo_tags (
+    photo_id, tag_id
+)
+values 
+    (1,1),
+    (1,2),
+    (2,3),
+    (3,2);
