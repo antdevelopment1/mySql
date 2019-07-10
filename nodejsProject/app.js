@@ -1,4 +1,4 @@
-// const faker = require("faker");
+const faker = require("faker");
 const mysql = require("mysql");
 
 const conn = mysql.createConnection({
@@ -22,6 +22,34 @@ conn.query(q, function(error, results, fields) {
     throw error;
   }
   console.log(results[0].total);
+});
+
+// let addEmail = "insert into users (email) values ('locksley@gmail.com');";
+
+// conn.query(addEmail, function(error, results, fields) {
+//   if (error) {
+//     throw error;
+//   }
+//   console.log(results);
+// });
+
+// Inserting data
+let person = { email: faker.internet.email() };
+
+conn.query("insert into users set ?", person, function(err, result) {
+  if (err) {
+    console.log(err);
+  }
+  console.log(result);
+});
+
+let getAll = "select * from users";
+
+conn.query(getAll, function(error, results, fields) {
+  if (error) {
+    throw error;
+  }
+  console.log(results);
 });
 
 conn.end();
