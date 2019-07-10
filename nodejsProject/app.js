@@ -1,4 +1,4 @@
-const faker = require("faker");
+// const faker = require("faker");
 const mysql = require("mysql");
 
 const conn = mysql.createConnection({
@@ -15,16 +15,13 @@ conn.connect(function(err) {
   console.log("Connected!");
 });
 
-let q = "select curtime() as time, curdate() as date, now() as now";
+let q = "select * from users";
 
 conn.query(q, function(error, results, fields) {
   if (error) {
     throw error;
   }
-  console.log(results[0].time);
-  console.log(results[0].date);
-  console.log(results[0].now);
-  //   console.log("The solution is: ", results[0].solution);
+  console.log(results);
 });
 
 conn.end();
