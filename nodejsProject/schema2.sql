@@ -15,3 +15,5 @@ select monthname(created_at) as month_joined, count(*) as count from users
     group by month_joined
     order by count desc;
 
+-- Challenge 4 Count the number of users with yahoo emails
+select count(*) from users where email like "%@yahoo.com%";
