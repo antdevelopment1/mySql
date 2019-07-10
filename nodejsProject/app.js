@@ -34,11 +34,14 @@ conn.query(q, function(error, results, fields) {
 // });
 
 // Inserting data
-let person = { email: faker.internet.email() };
+let person = {
+  email: faker.internet.email(),
+  created_at: faker.date.past()
+};
 
 conn.query("insert into users set ?", person, function(err, result) {
   if (err) {
-    console.log(err);
+    throw err;
   }
   console.log(result);
 });
