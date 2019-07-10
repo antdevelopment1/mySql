@@ -15,13 +15,13 @@ conn.connect(function(err) {
   console.log("Connected!");
 });
 
-let q = "select * from users";
+let q = "select count(*) as total from users";
 
 conn.query(q, function(error, results, fields) {
   if (error) {
     throw error;
   }
-  console.log(results);
+  console.log(results[0].total);
 });
 
 conn.end();
