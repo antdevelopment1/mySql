@@ -15,13 +15,15 @@ conn.connect(function(err) {
   console.log("Connected!");
 });
 
-let q = "select curdate()";
+let q = "select curtime() as time, curdate() as date, now() as now";
 
 conn.query(q, function(error, results, fields) {
   if (error) {
     throw error;
   }
-  console.log(results);
+  console.log(results[0].time);
+  console.log(results[0].date);
+  console.log(results[0].now);
   //   console.log("The solution is: ", results[0].solution);
 });
 
