@@ -14,3 +14,4 @@ select * from users where created_at = (select min(created_at) from users);
 select monthname(created_at) as month_joined, count(*) as count from users
     group by month_joined
     order by count desc;
+
